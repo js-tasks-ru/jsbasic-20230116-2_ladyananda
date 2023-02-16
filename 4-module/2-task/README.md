@@ -13,9 +13,10 @@ function makeDiagonalRed(table) {
 // Где в переменной table находится DOM-элемент для тега <table>
 makeDiagonalRed(table);
 ```
+
 Как должно получиться, можно посмотреть, открыв в браузере страничку с результатом: `/result.view/index.html`.
 
-P.S. для решения рекомендуется использовать свойства `rows` таблицы (элемент `<table>`) 
+P.S. для решения рекомендуется использовать свойства `rows` таблицы (элемент `<table>`)
 и `cells` элемента строки (элемент `<tr>`). Подробнее об этом можно прочитать [вот тут](https://learn.javascript.ru/dom-navigation#dom-navigation-tables);
 
 Чтобы сделать ячейку красной, рекомендуется использовать свойство `style`, которое есть у всех элементов. Почитать подробнее можно [вот тут](https://learn.javascript.ru/styles-and-classes#element-style)
