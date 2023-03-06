@@ -1,41 +1,29 @@
 function initCarousel() {
-  const carouselArrowRight = document.querySelector(".carousel__arrow_right");
-  const carouselArrowLeft = document.querySelector(".carousel__arrow_left");
-  const carouselInner = document.querySelector(".carousel__inner");
-  const carouselSlide = document.querySelector(".carousel__slide");
-  let slideWidth = carouselSlide.offsetWidth;
-  let currentWidth = 0;
-  let step = 1;
+  let rightArrow = document.querySelector(".carousel__arrow_right");
+  let leftArrow = document.querySelector(".carousel__arrow_left");
+  let carouselInner = document.querySelector(".carousel__inner");
 
-  const hidden = function () {
-    if (step === carouselInner.children.length) {
-      carouselArrowRight.style.display = "none";
-    } else {
-      carouselArrowRight.style.display = "";
-    }
-    if (step > 1) {
-      carouselArrowLeft.style.display = "";
-    } else {
-      carouselArrowLeft.style.display = "none";
+  let currentWidth = 0;
+  leftArrow.style.display = "none";
+
+  offsetRight = () => {
+    carouselInner.style.transform = `translateX(${(currentWidth -=
+      carouselInner.offsetWidth)}px)`;
+    leftArrow.style.display = "";
+    if (currentWidth < -carouselInner.offsetWidth * 2) {
+      rightArrow.style.display = "none";
     }
   };
 
-  hidden();
-  carouselArrowRight.addEventListener("click", () => {
-    step += 1;
-    hidden();
-    carouselInner.style.transform = `translateX(-${
-      currentWidth + slideWidth
-    }px)`;
-    currentWidth += slideWidth;
-  });
+  offsetLeft = () => {
+    carouselInner.style.transform = `translateX(${(currentWidth +=
+      carouselInner.offsetWidth)}px)`;
+    rightArrow.style.display = "";
+    if (currentWidth == 0) {
+      leftArrow.style.display = "none";
+    }
+  };
 
-  carouselArrowLeft.addEventListener("click", () => {
-    step -= 1;
-    hidden();
-    carouselInner.style.transform = `translateX(-${
-      currentWidth - slideWidth
-    }px)`;
-    currentWidth -= slideWidth;
-  });
+  rightArrow.addEventListener("click", offsetRight);
+  leftArrow.addEventListener("click", offsetLeft);
 }
