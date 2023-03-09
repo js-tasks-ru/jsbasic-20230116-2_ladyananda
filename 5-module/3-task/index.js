@@ -14,6 +14,7 @@ function initCarousel() {
       rightArrow.style.display = "none";
     }
   };
+  
 
   offsetLeft = () => {
     carouselInner.style.transform = `translateX(${(currentWidth +=
